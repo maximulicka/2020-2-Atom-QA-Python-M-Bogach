@@ -33,7 +33,7 @@ class TestInt:
     @pytest.mark.parametrize(*parametrs)
     def test_division(self, x, y, result):
         if y == 0:
-            with pytest.raises(ZeroDivisionError):
-                assert x / y == result
+            with pytest.raises(result):
+                x / y
         else:
-            assert x / y == result
+            assert result == x / y
