@@ -36,27 +36,27 @@ def driver(config):
     version = config['version']
     url = config['url']
     download_dir = config['download_dir']
+    selenoid = config['selenoid']
 
     if browser == 'chrome':
         options = ChromeOptions()
-        options.add_argument("--window-size=800,600")
+        if selenoid:
+            # http://127.0.0.1:4444/wd/hub/
+            driver = webdriver.Remote(command_executor=selenoid,
+                                      options=options,
+                                      desired_capabilities={'acceptInsecureCerts': True, 'browserName': 'chrome'})
 
-        prefs = {"download.default_directory": download_dir}
-        options.add_experimental_option('prefs', prefs)
+        else:
+            options.add_argument("--window-size=800,600")
 
-        manager = ChromeDriverManager(version=version)
-        driver = webdriver.Chrome(executable_path=manager.install(),
-                                  options=options,
-                                  desired_capabilities={'acceptInsecureCerts': True}
-                                  )
-        # driver = webdriver.Remote(command_executor='http://127.0.0.1:4444/wd/hub/',
-        #                           options=options,
-        #                           desired_capabilities={'acceptInsecureCerts': True}
-        #                           )
+            prefs = {"download.default_directory": download_dir}
+            options.add_experimental_option('prefs', prefs)
 
-    elif browser == 'firefox':
-        manager = GeckoDriverManager(version=version)
-        driver = webdriver.Firefox(executable_path=manager.install())
+            manager = ChromeDriverManager(version=version)
+            driver = webdriver.Chrome(executable_path=manager.install(),
+                                      options=options,
+                                      desired_capabilities={'acceptInsecureCerts': True}
+                                      )
 
     else:
         raise UsupportedBrowserException(f'Usupported browser: "{browser}"')

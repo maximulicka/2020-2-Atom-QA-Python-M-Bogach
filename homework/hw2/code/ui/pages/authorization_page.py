@@ -28,14 +28,10 @@ class AuthorizationPage(BasePage):
         self.fill_field(self.locators.NAME_SEGMENT, _name)
         self.click(self.locators.CREATE_SEGMENT)
 
-        
     def delete_segment(self, segment_name):
         by, locator = self.locators.COMPANY_LOCATOR
-        segment_adress = self.find((by, locator.format(segment_name)), timeout=7)
+        segment_adress = self.find((by, locator.format(segment_name)))
         segment = segment_adress.get_attribute('href').split('/')[-1]
         by, delete_locator = self.locators.DELETE_SEGMENT
-        self.click((by, delete_locator.format(segment)), timeout=7)
+        self.click((by, delete_locator.format(segment)))
         self.click(self.locators.CLICK_DELETE_SEGMENT)
-
-
-    
