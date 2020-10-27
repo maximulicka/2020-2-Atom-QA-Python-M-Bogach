@@ -19,4 +19,5 @@ class TestMyTarget(BaseCase):
     def test_delete_segment(self):
         name = str(uuid.uuid4())
         segment = self.mytarget_client.create_segment(name)
-        assert self.mytarget_client.delete_segment(segment) == 204
+        self.mytarget_client.delete_segment(segment)
+        assert not self.mytarget_client.get_audience(segment)

@@ -78,3 +78,12 @@ class MyTargetClient:
         }
         response = self._request(method='DELETE', url=url, headers=headers)
         return response.status_code
+
+    def get_audience(self, segment):
+        url = '''https://target.my.com/api/v2/remarketing/segments.json?fields=relations__object_type,relations__object_id,relations__params,relations_count,
+        id,name,pass_condition,created,campaign_ids,users,flags&limit=500'''
+        response = self._request(method='GET', url=url, json_=True)
+        for i in response.get('items'):
+            if i.get('id') == segment:
+                return True
+        return False
