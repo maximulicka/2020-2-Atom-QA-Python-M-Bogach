@@ -1,0 +1,6 @@
+- const
+https://overload.yandex.net/356441#tab=test_data&tags=&plot_groups=main&machines=&metrics=&slider_start=1606336549&slider_end=1606336578
+- line
+https://overload.yandex.net/356445#tab=test_data&tags=&plot_groups=main&machines=&metrics=&slider_start=1606336668&slider_end=1606336698
+- step
+https://overload.yandex.net/356447#tab=test_data&tags=&plot_groups=main&machines=&metrics=&slider_start=1606336771&slider_end=1606337132

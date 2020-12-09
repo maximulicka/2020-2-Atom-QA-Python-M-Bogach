@@ -1,0 +1,9 @@
+[Connection: Close]
+[Host: 192.168.217.65/22:5555]
+[Authorization: Basic bWF4OjExMQ==]
+/sport_team
+
+[Connection: Close]
+[Host: 192.168.217.65/22:5555]
+[Authorization: Basic bWF4OjExMQ==]
+/message
